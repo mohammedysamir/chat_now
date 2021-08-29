@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project1/auth/loginsreen.dart';
-import 'package:project1/auth/registrationscreen.dart';
-import 'package:project1/splashscreen.dart';
+import 'package:chat_now/auth/loginsreen.dart';
+import 'package:chat_now/auth/registrationscreen.dart';
+import 'package:chat_now/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:project1/auth/registrationscreen.dart';
+import 'package:chat_now/auth/registrationscreen.dart';
 // ignore: use_key_in_widget_constructors
 class SplashScreen extends StatefulWidget {
   static String routeName='Splash';
