@@ -33,35 +33,6 @@ class _SplashState extends State<SplashScreen> {
                   .size
                   .width,
             ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 200.0, 8.0, 0),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset("assets/"),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8.0, 50.0, 8.0, 0),
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset("assets/route.png"),
-                              // ignore: prefer_const_constructors
-                              Text(
-                                "supervised by Mohamed Nabil",
-                                // ignore: prefer_const_constructors
-                                style: TextStyle(
-                                  // ignore: prefer_const_constructors
-                                  color: Color.fromARGB(255, 57, 165, 82),
-                                  fontSize: 18,
-                                ),
-                              )
-                            ]),
-                      )
-                    ]),
-              ),
-            ),
           ],
         ));
   }
