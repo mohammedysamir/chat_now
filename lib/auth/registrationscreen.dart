@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-// ignore: use_key_in_widget_constructors
+
+import '../Background.dart';
 class RegisterationScreen extends StatefulWidget {
   // route name for the registration screen.
   static const String routeName='register'; 
@@ -25,21 +26,12 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
     return Stack(
      // ignore: prefer_const_literals_to_create_immutables
      children: [
-       Container(
-         decoration: BoxDecoration(
-          color: Colors.white,
-         ),
-         child:Image.asset('assets/SIGN IN – 1.png',
-          fit:BoxFit.cover,
-          width:double.infinity,
-          height:double.infinity,
-         ) ,
-       ),
+       Background(),
        Scaffold(
         backgroundColor:Colors.transparent,
         appBar: AppBar(
           
-          title: Text('Crearte Account'),
+          title: Text('Create Account'),
           backgroundColor:Colors.transparent,
           elevation:0.0,
         ),
@@ -98,7 +90,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                           return 'Please Enter Password';
                         }
                         else if (value.length<6){
-                          return 'Password lenght should be atleat 6 charcaters';
+                          return 'Password length should be at least 6 characters';
                         }
                         return null;
                       },
