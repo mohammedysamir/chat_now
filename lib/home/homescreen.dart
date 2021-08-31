@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
           ),
-          child:Image.asset('assets/SIGN IN – 1.png',
+          child:Image.asset('assets/background.png',
             fit:BoxFit.cover,
             width:double.infinity,
             height:double.infinity,
