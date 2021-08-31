@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:chat_now/auth/registrationscreen.dart';
-// ignore: use_key_in_widget_constructors
+import 'package:chat_now/auth/loginsreen.dart';
 class SplashScreen extends StatefulWidget {
   static String routeName='Splash';
 
@@ -12,7 +11,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashState extends State<SplashScreen> {
   route() {
-    Navigator.pushNamed(context, RegisterationScreen.routeName);
+    Navigator.pushNamed(context, LoginScreen.routeName);
   }
   @override
   void initState() {

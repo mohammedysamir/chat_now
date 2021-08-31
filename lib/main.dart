@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             SplashScreen.routeName:(context)=>SplashScreen(),
             RegisterationScreen.routeName:(context)=>RegisterationScreen(),
             LoginScreen.routeName:(context)=>LoginScreen(),
-            HomeScreen.routeName:(conext)=>HomeScreen(),
+            HomeScreen.routeName:(context)=>HomeScreen(),
             AddRoom.routeName:(context)=>AddRoom(),
           } ,
           initialRoute: SplashScreen.routeName,

@@ -83,6 +83,9 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                           onChanged: (textValue) {
                             password = textValue;
                           },
+                          obscureText: true,
+                          autocorrect: false,
+                          enableSuggestions: false,
                           decoration: InputDecoration(
                               labelText: 'Password',
                               floatingLabelBehavior:
@@ -105,13 +108,13 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                         child: CircularProgressIndicator(),
                       )
                     : Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 16, 8, 16),
+                        padding: const EdgeInsets.fromLTRB(8, 16, 8, 0),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               onPrimary: Colors.grey,
                               primary: Colors.white,
                               elevation: 5),
-                          onPressed: () => createaccout(),
+                          onPressed: () => {createaccout(),Navigator.pop(context)},
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
