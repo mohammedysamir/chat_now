@@ -1,9 +1,7 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:chat_now/Background.dart';
 import 'package:chat_now/auth/registrationscreen.dart';
 import 'package:chat_now/database/databasehelper.dart';
 import 'package:chat_now/home/homescreen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -104,19 +102,29 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               ElevatedButton(
-                  onPressed: () {
-                    if (_loginformkey.currentState?.validate() == true) {
-                      createFirebaseUser();
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: isloading
-                        ? Center(
-                            child: CircularProgressIndicator(),
-                          )
-                        : Text('Login'),
-                  )),
+                style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                    primary: Colors.blue,
+                    elevation: 5),
+                onPressed: () => () {
+                  if (_loginformkey.currentState?.validate() == true) {
+                    createFirebaseUser();
+                  }
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Login',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Icon(
+                      Icons.arrow_forward,
+                      size: 25,
+                    ),
+                  ],
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
                 child: Container(
