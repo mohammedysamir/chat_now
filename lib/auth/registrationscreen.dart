@@ -116,7 +116,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Create Account'),
-                              Icon(Icons.arrow_forward,size: 25),
+                              Icon(Icons.arrow_forward,size: 22),
                             ],
                           ),
                         ),

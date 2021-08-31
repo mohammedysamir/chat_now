@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.topLeft,
@@ -120,13 +120,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Icon(
                       Icons.arrow_forward,
-                      size: 25,
+                      size: 22,
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.topLeft,
