@@ -30,9 +30,10 @@ class UnifiedScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+        children: [
         Background(),
         Scaffold(
+            resizeToAvoidBottomInset:false,
             backgroundColor: Colors.transparent,
             appBar: AppBar(
               automaticallyImplyLeading: isImplyLeading,
