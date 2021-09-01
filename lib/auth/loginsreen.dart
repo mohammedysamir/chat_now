@@ -65,6 +65,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                       TextFormField(
+                        obscureText: true,
+                        autocorrect: false,
+                        enableSuggestions: false,
                         onChanged: (textValue) {
                           password = textValue;
                         },
@@ -106,9 +109,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPrimary: Colors.white,
                     primary: Colors.blue,
                     elevation: 5),
-                onPressed: () => () {
-                  if (_loginformkey.currentState?.validate() == true) {
-                    createFirebaseUser();
+                onPressed: () => {
+                  if (_loginformkey.currentState!.validate()) {
+                    loginUser()
                   }
                 },
                 child: Row(
@@ -152,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isloading = false;
 
-  void createFirebaseUser() async {
+  void loginUser() async {
     setState(() {
       isloading = true;
     });
@@ -160,28 +163,31 @@ class _LoginScreenState extends State<LoginScreen> {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       if (userCredential.user == null) {
-        showErrormessage(
-            'Invalid credientials nou user exist with this email and password');
+        showErrorMessage(
+            'Invalid credentials no user exist with this email and password');
       } else {
+        print("User accepted");
         getuserscollection()
             .doc(userCredential.user!.uid)
             .get()
             .then((retriveduser) {
           provider.updateuser(retriveduser.data());
-          Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+          Navigator.pushNamed(context, HomeScreen.routeName);
         });
       }
     } on FirebaseAuthException catch (e) {
-      showErrormessage(e.message ?? '');
-    } catch (e) {
-      showErrormessage(e.toString());
+      if (e.code == 'user-not-found') {
+        showErrorMessage('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        showErrorMessage('Wrong password provided for that user.');
+      }
+      setState(() {
+        isloading = false;
+      });
     }
-    setState(() {
-      isloading = false;
-    });
   }
 
-  void showErrormessage(String message) {
+  void showErrorMessage(String message) {
     showDialog(
         context: context,
         builder: (buildContext) {

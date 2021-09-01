@@ -39,10 +39,11 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
             padding: EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(8.0, 200.0, 8.0, 0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Form(
                     key: _registerformkey,
                     child: Column(
