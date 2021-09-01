@@ -76,9 +76,9 @@ class _AddRoomState extends State<AddRoom> {
                             },
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(8,24,8,10),
+                            padding: const EdgeInsets.fromLTRB(8, 24, 8, 10),
                             child: Container(
-                              padding:const EdgeInsets.fromLTRB(8,0,8,0),
+                              padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                               decoration: BoxDecoration(border: Border.all()),
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton(
@@ -125,6 +125,12 @@ class _AddRoomState extends State<AddRoom> {
                   ),
                   Spacer(),
                   ElevatedButton(
+                    style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ))),
                     onPressed: () {},
                     child: Text('Create'),
                   )
