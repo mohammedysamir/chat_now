@@ -1,10 +1,10 @@
 import 'package:chat_now/add_room/RoomComponent.dart';
 import 'package:flutter/material.dart';
-import 'model/User.dart';
+import 'model/MyUser.dart';
 class AppProvider extends ChangeNotifier{
-  User? currentuser; // nullable
+  MyUser? currentuser; // nullable
   late List<RoomComponent> roomList=List.empty(growable: true); //save user's room list
-  void updateuser(User? user){
+  void updateuser(MyUser? user){
     notifyListeners();
   }
   void updateRoomList(RoomComponent roomComponent){
