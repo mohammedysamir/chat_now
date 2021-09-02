@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:chat_now/home/HomeScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_now/auth/registrationscreen.dart';
-// ignore: use_key_in_widget_constructors
+import 'package:chat_now/auth/LoginSreen.dart';
+import 'package:provider/provider.dart';
+
+import 'AppProvider.dart';
 class SplashScreen extends StatefulWidget {
   static String routeName='Splash';
 
@@ -11,8 +14,10 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashState extends State<SplashScreen> {
+  late AppProvider provider;
+
   route() {
-    Navigator.pushNamed(context, RegisterationScreen.routeName);
+    Navigator.pushNamed(context, provider.currentuser==null?LoginScreen.routeName:HomeScreen.routeName);// if the user already logged in then save it and redirect to home
   }
   @override
   void initState() {
@@ -23,6 +28,7 @@ class _SplashState extends State<SplashScreen> {
   }
 
   Widget build(BuildContext context) {
+    provider = Provider.of<AppProvider>(context);
     return Scaffold(
         body: Stack(
           children: [

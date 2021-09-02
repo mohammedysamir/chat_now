@@ -1,4 +1,4 @@
-import 'package:chat_now/model/user.dart';
+import 'package:chat_now/model/User.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 CollectionReference<User> getuserscollection(){
   return FirebaseFirestore.instance.collection(User.COLLECTION_NAME).withConverter<User>(
