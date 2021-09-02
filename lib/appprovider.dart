@@ -1,4 +1,4 @@
-import 'package:chat_now/RoomComponent.dart';
+import 'package:chat_now/add_room/RoomComponent.dart';
 import 'package:flutter/material.dart';
 import 'model/user.dart';
 class AppProvider extends ChangeNotifier{

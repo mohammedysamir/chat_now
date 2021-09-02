@@ -19,7 +19,7 @@ class RoomComponent extends StatelessWidget{
   
 }
 class RoomData{
-String roomName,roomImagePath;
+String roomName,roomImagePath,category,description;
 int members;
-RoomData(this.roomName,this.roomImagePath,this.members);
+RoomData({required this.roomName,required this.category,required this.description,required this.roomImagePath,required this.members});
 }
