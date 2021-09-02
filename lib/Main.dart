@@ -15,30 +15,10 @@ Future<void> main()async{
 }
 // ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
-  Future<void> test() async {
-    
-    DatabaseAPI api = new DatabaseAPI();
-    await api.users.getUsers().then((users) {
-      users.forEach((user) {
-        print(user.toJson());
-      });
-    });
 
-    await api.rooms.getRooms().then((ds) {
-      ds.forEach((d) {
-        print(d.toJson());
-      });
-    });
-
-    await api.rooms.getRoom("chat room 1").then((ds) {
-      ds.forEach((d) {
-        print(d.toJson());
-      });
-    });
-  }
   @override
   Widget build(BuildContext context) {
-    test();
+
     // ignore: prefer_const_constructors
     return ChangeNotifierProvider(
       create: (context) => AppProvider(),
