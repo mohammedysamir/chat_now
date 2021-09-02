@@ -1,12 +1,12 @@
 import 'package:chat_now/Background.dart';
-import 'package:chat_now/auth/registrationscreen.dart';
+import 'package:chat_now/auth/RegistrationScreen.dart';
 import 'package:chat_now/database/databasehelper.dart';
-import 'package:chat_now/home/homescreen.dart';
+import 'package:chat_now/home/HomeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../appprovider.dart';
+import '../AppProvider.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = 'login';

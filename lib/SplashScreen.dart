@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:chat_now/home/homescreen.dart';
+import 'package:chat_now/home/HomeScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_now/auth/loginsreen.dart';
+import 'package:chat_now/auth/LoginSreen.dart';
 import 'package:provider/provider.dart';
 
-import 'appprovider.dart';
+import 'AppProvider.dart';
 class SplashScreen extends StatefulWidget {
   static String routeName='Splash';
 

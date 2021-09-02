@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Background.dart';
-import '../appprovider.dart';
+import '../AppProvider.dart';
 import 'RoomComponent.dart';
 
 class AddRoom extends StatefulWidget {

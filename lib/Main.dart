@@ -1,12 +1,12 @@
-import 'package:chat_now/splashscreen.dart';
+import 'package:chat_now/SplashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'add_room/addroom.dart';
-import 'appprovider.dart';
-import 'auth/loginsreen.dart';
-import 'auth/registrationscreen.dart';
-import 'home/homescreen.dart';
+import 'add_room/AddRoom.dart';
+import 'AppProvider.dart';
+import 'auth/LoginSreen.dart';
+import 'auth/RegistrationScreen.dart';
+import 'home/HomeScreen.dart';
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

@@ -1,20 +1,16 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:chat_now/Background.dart';
 import 'package:chat_now/database/databasehelper.dart';
-import 'package:chat_now/home/homescreen.dart';
+import 'package:chat_now/home/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:chat_now/model/user.dart' as MyUser;
+import 'package:chat_now/model/User.dart' as MyUser;
 
 import 'package:provider/provider.dart';
 
-import '../appprovider.dart';
-import 'loginsreen.dart';
+import '../AppProvider.dart';
 
-// ignore: use_key_in_widget_constructors
 class RegisterationScreen extends StatefulWidget {
-  // route name for the registration screen.
   static const String routeName = 'register';
 
   @override
