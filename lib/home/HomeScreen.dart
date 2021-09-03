@@ -87,14 +87,18 @@ class _HomeScreenState extends State<HomeScreen> {
             if (provider.listSize() != 0) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: RoomComponent(new RoomData(
-                    roomImagePath:
-                        provider.roomList.elementAt(index).room.roomImagePath,
-                    roomName: provider.roomList.elementAt(index).room.roomName,
-                    members: provider.roomList.elementAt(index).room.members,
-                    category: provider.roomList.elementAt(index).room.category,
-                    description:
-                        provider.roomList.elementAt(index).room.description)),
+                child: RoomComponent(
+                  new RoomData(
+                      roomImagePath:
+                          provider.roomList.elementAt(index).room.roomImagePath,
+                      roomName:
+                          provider.roomList.elementAt(index).room.roomName,
+                      members: provider.roomList.elementAt(index).room.members,
+                      category:
+                          provider.roomList.elementAt(index).room.category,
+                      description:
+                          provider.roomList.elementAt(index).room.description),
+                ),
               );
             } else
               return Text("No rooms joined yet");
