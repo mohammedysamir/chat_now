@@ -4,7 +4,7 @@ import 'package:chat_now/home/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:chat_now/model/User.dart' as MyUser;
+import 'package:chat_now/model/MyUser.dart';
 
 import 'package:provider/provider.dart';
 
@@ -149,8 +149,8 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
 
       // pointer to the user collection
       final userCollectionRef = getuserscollection();
-      final userr = MyUser.User(
-          ID: userCredential.user!.uid, Username: username, email: email);
+      final userr = MyUser(
+          ID: userCredential.user!.uid, username: username, email: email);
       userCollectionRef.doc(userr.ID).set(userr).then((value) {
         // save user
         provider.updateuser(userr); // save user
