@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
             AddRoom.routeName:(context)=>AddRoom(),
             ChatScreen.routeName:(context)=>ChatScreen(roomID: "yHPmQJdhhxUXsgNhBqMT"),
           } ,
-          initialRoute: ChatScreen.routeName,
+          initialRoute: SplashScreen.routeName,
 
         );},);
 
