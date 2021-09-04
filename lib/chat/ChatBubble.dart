@@ -13,7 +13,7 @@ class ChatBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FirebaseAuth auth = FirebaseAuth.instance;
-    final userID = "NdFtxkZQEFWLbBxMlPt9ZsgCGW23"; // TODO: replace this with actual user id
+    final userID = auth.currentUser!.uid;
     var color = Color(0xFFF8F8F8);
     var textColor = Color(0xFF707070);
     var alignment = Alignment.topLeft;

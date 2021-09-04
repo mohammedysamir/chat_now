@@ -28,7 +28,7 @@ class MessageFormState extends State<MessageForm> {
   @override
   Widget build(BuildContext context) {
     final FirebaseAuth auth = FirebaseAuth.instance;
-    final userID = "NdFtxkZQEFWLbBxMlPt9ZsgCGW23"; // TODO: replace to auth.currentUser.uid
+    final userID = auth.currentUser!.uid;
     // Build a Form widget using the _formKey created above.
     return Row(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
