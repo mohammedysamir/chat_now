@@ -1,5 +1,6 @@
 import 'package:chat_now/add_room/RoomComponent.dart';
 import 'package:chat_now/add_room/AddRoom.dart';
+import 'package:chat_now/database/DatabaseAPI.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -78,31 +79,36 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget createRoomList() {
-    return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisSpacing: 5, crossAxisSpacing: 5, crossAxisCount: 2),
-        itemCount: provider.listSize(),
-        itemBuilder: (BuildContext ctx, int index) {
-          {
-            if (provider.listSize() != 0) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RoomComponent(
-                  new RoomData(
-                      roomImagePath:
-                          provider.roomList.elementAt(index).room.roomImagePath,
-                      roomName:
-                          provider.roomList.elementAt(index).room.roomName,
-                      members: provider.roomList.elementAt(index).room.members,
-                      category:
-                          provider.roomList.elementAt(index).room.category,
-                      description:
-                          provider.roomList.elementAt(index).room.description),
-                ),
-              );
-            } else
-              return Text("No rooms joined yet");
-          }
-        });
+    return StreamBuilder<Object>(
+      stream: null,
+      builder: (context, snapshot) {
+        return GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisSpacing: 5, crossAxisSpacing: 5, crossAxisCount: 2),
+            itemCount: provider.listSize(),
+            itemBuilder: (BuildContext ctx, int index) {
+              {
+                if (provider.listSize() != 0) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RoomComponent(
+                      new RoomData(
+                          roomImagePath:
+                              provider.roomList.elementAt(index).room.roomImagePath,
+                          roomName:
+                              provider.roomList.elementAt(index).room.roomName,
+                          members: provider.roomList.elementAt(index).room.members,
+                          category:
+                              provider.roomList.elementAt(index).room.category,
+                          description:
+                              provider.roomList.elementAt(index).room.description),
+                    ),
+                  );
+                } else
+                  return Text("No rooms joined yet");
+              }
+            });
+      }
+    );
   }
 }
