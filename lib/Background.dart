@@ -23,9 +23,11 @@ class UnifiedScaffold extends StatelessWidget {
   final Widget body;
   bool isImplyLeading;
   String title;
+  bool resizeToAvoidBottomInset;
 
   UnifiedScaffold(
-      {required this.body, required this.isImplyLeading, required this.title});
+      {required this.body, required this.isImplyLeading,
+        required this.title, this.resizeToAvoidBottomInset = false});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class UnifiedScaffold extends StatelessWidget {
         children: [
         Background(),
         Scaffold(
-            resizeToAvoidBottomInset:false,
+            resizeToAvoidBottomInset: resizeToAvoidBottomInset,
             backgroundColor: Colors.transparent,
             appBar: AppBar(
               automaticallyImplyLeading: isImplyLeading,

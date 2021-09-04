@@ -48,7 +48,7 @@ class RoomCollectionHandler {
     }
   }
 
-  // EFFECTS: registers a new user in the database
+  // EFFECTS: creates a new room in the database
   Future<void> addRoom(Room room) async {
     try {
       final conflictingRooms =

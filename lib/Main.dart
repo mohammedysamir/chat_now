@@ -1,5 +1,5 @@
 import 'package:chat_now/SplashScreen.dart';
-import 'package:chat_now/database/DatabaseAPI.dart';
+import 'package:chat_now/chat/ChatScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -33,8 +33,9 @@ class MyApp extends StatelessWidget {
             LoginScreen.routeName:(context)=>LoginScreen(),
             HomeScreen.routeName:(context)=>HomeScreen(),
             AddRoom.routeName:(context)=>AddRoom(),
+            ChatScreen.routeName:(context)=>ChatScreen(roomID: "yHPmQJdhhxUXsgNhBqMT"),
           } ,
-          initialRoute: SplashScreen.routeName,
+          initialRoute: ChatScreen.routeName,
 
         );},);
 
