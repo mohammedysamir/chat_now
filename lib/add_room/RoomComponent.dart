@@ -1,3 +1,4 @@
+import 'package:chat_now/chat/ChatScreen.dart';
 import 'package:flutter/material.dart';
 
 class RoomComponent extends StatefulWidget {
@@ -22,8 +23,11 @@ class _RoomComponentState extends State<RoomComponent> {
           {
             showJoinDialog(context),
           }
-        else
-          null //implement going to chat room
+        else //implement going to chat room
+          {
+            Navigator.pushNamed(context, ChatScreen.routeName,
+                arguments: widget.room.roomID)
+          }
       },
       child: Container(
         decoration: BoxDecoration(
@@ -144,7 +148,7 @@ class _RoomComponentState extends State<RoomComponent> {
 }
 
 class RoomData {
-  String roomName, category, description,roomID;
+  String roomName, category, description, roomID;
   late String roomImagePath;
   // int members;
 
