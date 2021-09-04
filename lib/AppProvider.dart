@@ -9,6 +9,7 @@ class AppProvider extends ChangeNotifier{
   }
   void updateRoomList(RoomComponent roomComponent){
     roomList.add(roomComponent);
+    notifyListeners();
   }
   int listSize(){
     return roomList.length;
