@@ -6,6 +6,7 @@ class Chat {
   String message;
   String roomID;
   String sentBy;
+  String authorID;
   int time;
 
   Chat({
@@ -13,6 +14,7 @@ class Chat {
     required this.roomID,
     required this.sentBy,
     required this.time,
+    required this.authorID,
   });
 
   // named parameter that must be sent.
@@ -22,6 +24,7 @@ class Chat {
     roomID: json['roomID']! as String,
     sentBy: json['sentBy'] ! as String,
     time: json['time']! as int,
+    authorID: json['authorID'] as String,
   );
 
   Map<String, Object?> toJson() {
@@ -30,6 +33,7 @@ class Chat {
       'roomID': roomID,
       'sentBy': sentBy,
       'time': time,
+      'authorID': authorID,
     };
   }
 }

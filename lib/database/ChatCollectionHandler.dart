@@ -27,8 +27,20 @@ class ChatCollectionHandler {
   }
 
   // EFFECTS: returns a stream of rooms that updates in real time to be used in a stream builder
-  Stream getRoomsStream(String roomID) {
+  Stream<QuerySnapshot> getChatsStream(String roomID) {
+    print(roomID);print("here");
+
     return chatsRef.where('roomID', isEqualTo: roomID).orderBy('time').snapshots();
+    // return chatsRef.snapshots();
+  }
+
+  // EFFECTS: creates a new chat message in the database
+  Future<void> addChat(Chat chat) async {
+    try {
+      await chatsRef.add(chat);
+    } catch (e) {
+      print(e);
+    }
   }
 
 }

@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 class UserCollectionHandler {
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  final FirebaseAuth auth = FirebaseAuth.instance;
 
   final usersRef = FirebaseFirestore.instance
       .collection(MyUser.COLLECTION_NAME)
@@ -30,6 +29,17 @@ class UserCollectionHandler {
     }
   }
 
+  // EFFECTS: return a user given his id
+  Future<MyUser?> getUser(String id) async {
+    try {
+      DocumentSnapshot user = await usersRef.doc(id).get();
+      return user.data()! as MyUser;
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
   // EFFECTS: returns a stream of users that updates in real time to be used in a stream builder
   Stream getUsersStream() {
     return usersRef.snapshots();
@@ -39,6 +49,7 @@ class UserCollectionHandler {
   Future<void> registerUser(
       String email, String username, String password) async {
 
+    final FirebaseAuth auth = FirebaseAuth.instance;
     try {
 
       final conflictingUsers = await usersRef.where('username', isEqualTo: username).get();
@@ -66,6 +77,7 @@ class UserCollectionHandler {
 
   // EFFECTS: returns current signed in user
   User? getCurrentUser() {
+    final FirebaseAuth auth = FirebaseAuth.instance;
     if (auth.currentUser == null) {
       print("not signed in");
     }
@@ -74,6 +86,7 @@ class UserCollectionHandler {
 
   // EFFECTS: updates user data of the current signed in user, fields are optional
   Future<void> updateCurrentUser (String? email, String? username, String? password) async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
     try {
       if (email != null){
         await usersRef.doc(auth.currentUser!.uid).update({'email': email});
@@ -102,6 +115,7 @@ class UserCollectionHandler {
 
   // EFFECTS: deletes current signed in user
   Future<void> deleteCurrentUser() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
     try {
       await usersRef.doc(auth.currentUser!.uid).delete();
       await auth.currentUser!.delete();
@@ -117,6 +131,7 @@ class UserCollectionHandler {
 
   // EFFECTS: signs in the user given correct email & password
   Future<void> signIn(String email, String password) async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
     try {
       await auth.signInWithEmailAndPassword(
           email: email,
@@ -133,6 +148,7 @@ class UserCollectionHandler {
 
   // EFFECTS: signs out the user
   Future<void> signOut() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
     await auth.signOut();
   }
 
