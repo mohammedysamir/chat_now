@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class RoomComponent extends StatefulWidget {
   final RoomData room;
-  final bool isFromBrowse;
+  bool isFromBrowse;
 
   RoomComponent(this.room, {this.isFromBrowse = false});
 
@@ -138,6 +138,7 @@ class _RoomComponentState extends State<RoomComponent> {
       widget.room.members++;
       joinMessage = 'Already joined';
       isButtonDisabled = true;
+      widget.isFromBrowse=false; //disable this dialog for joined rooms
     });
   }
 }
@@ -152,4 +153,5 @@ class RoomData {
       required this.description,
       required this.roomImagePath,
       required this.members});
+
 }
