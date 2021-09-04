@@ -1,6 +1,8 @@
 import 'package:chat_now/add_room/RoomComponent.dart';
 import 'package:chat_now/add_room/AddRoom.dart';
 import 'package:chat_now/database/DatabaseAPI.dart';
+import 'package:chat_now/model/Room.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -62,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       createRoomList(), //when the list is empty type no rooms joined
                 ),
                 Center(
-                  child: Text("Suggested rooms"),
+                  child: createRoomList(),
                 ),
               ],
             ),
@@ -79,29 +81,42 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget createRoomList() {
-    return StreamBuilder<Object>(
-      stream: null,
+    DatabaseAPI db = new DatabaseAPI();
+    Stream<QuerySnapshot> roomsStream = db.rooms.getRoomsStream();
+    return StreamBuilder<QuerySnapshot>(
+      stream: roomsStream,
       builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading");
+        }
         return GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 mainAxisSpacing: 5, crossAxisSpacing: 5, crossAxisCount: 2),
-            itemCount: provider.listSize(),
+            itemCount: snapshot.data!.docs.length,
             itemBuilder: (BuildContext ctx, int index) {
               {
-                if (provider.listSize() != 0) {
+                if (snapshot.data!.docs.length!= 0) {
+                  Room room = snapshot.data!.docs.map((doc) {
+                    Room room = doc.data()! as Room;
+                    return room;
+                  }).toList()[index];
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RoomComponent(
                       new RoomData(
-                          roomImagePath:
-                              provider.roomList.elementAt(index).room.roomImagePath,
-                          roomName:
-                              provider.roomList.elementAt(index).room.roomName,
-                          members: provider.roomList.elementAt(index).room.members,
+                          roomName: room.name,
+                          // members: provider.roomList.elementAt(index).room.members,
                           category:
-                              provider.roomList.elementAt(index).room.category,
+                              room.category,
                           description:
-                              provider.roomList.elementAt(index).room.description),
+                              room.description,
+                          roomID:
+                              room.ID!),
+
                     ),
                   );
                 } else

@@ -27,7 +27,7 @@ class RoomCollectionHandler {
   }
 
   // EFFECTS: returns a stream of rooms that updates in real time to be used in a stream builder
-  Stream getRoomsStream() {
+  Stream<QuerySnapshot> getRoomsStream() {
     return roomsRef.snapshots();
   }
 

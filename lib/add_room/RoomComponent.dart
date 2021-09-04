@@ -51,10 +51,10 @@ class _RoomComponentState extends State<RoomComponent> {
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
             ),
-            Text(
-              '${widget.room.members} Member(s)',
-              style: TextStyle(color: Colors.grey, fontSize: 13),
-            )
+            // Text(
+            //   // '${widget.room.members} Member(s)',
+            //   // style: TextStyle(color: Colors.grey, fontSize: 13),
+            // )
           ],
         ),
       ),
@@ -118,7 +118,7 @@ class _RoomComponentState extends State<RoomComponent> {
                     onPressed: () => {
                       if (!isButtonDisabled)
                         {
-                          addMember(),
+                          // addMember(),
                           Navigator.pop(context),
                           //Navigate to the chat room
                         }
@@ -133,25 +133,28 @@ class _RoomComponentState extends State<RoomComponent> {
         });
   }
 
-  void addMember() {
-    setState(() {
-      widget.room.members++;
-      joinMessage = 'Already joined';
-      isButtonDisabled = true;
-      widget.isFromBrowse=false; //disable this dialog for joined rooms
-    });
-  }
+  // void addMember() {
+  //   setState(() {
+  //     // widget.room.members++;
+  //     joinMessage = 'Already joined';
+  //     isButtonDisabled = true;
+  //     widget.isFromBrowse = false; //disable this dialog for joined rooms
+  //   });
+  // }
 }
 
 class RoomData {
-  String roomName, roomImagePath, category, description;
-  int members;
+  String roomName, category, description,roomID;
+  late String roomImagePath;
+  // int members;
 
-  RoomData(
-      {required this.roomName,
-      required this.category,
-      required this.description,
-      required this.roomImagePath,
-      required this.members});
-
+  RoomData({
+    required this.roomName,
+    required this.category,
+    required this.description,
+    required this.roomID,
+    // required this.members,
+  }) {
+    roomImagePath = 'assets/$category.png';
+  }
 }
