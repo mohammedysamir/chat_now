@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'model/MyUser.dart';
 class AppProvider extends ChangeNotifier{
   MyUser? currentuser; // nullable
-  late List<RoomComponent> roomList=List.empty(growable: true); //save user's room list
+  // late List<RoomComponent> roomList=List.empty(growable: true); //save user's room list
   void updateuser(MyUser? user){
     notifyListeners();
   }
-  void updateRoomList(RoomComponent roomComponent){
-    roomList.add(roomComponent);
-    notifyListeners();
-  }
-  int listSize(){
-    return roomList.length;
-  }
+  // void updateRoomList(RoomComponent roomComponent){
+  //   roomList.add(roomComponent);
+  //   notifyListeners();
+  // // }
+  // int listSize(){
+  //   return roomList.length;
+  // }
 }

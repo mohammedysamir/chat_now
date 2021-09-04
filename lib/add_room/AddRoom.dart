@@ -1,3 +1,6 @@
+import 'package:chat_now/database/DatabaseAPI.dart';
+import 'package:chat_now/model/Room.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -144,15 +147,24 @@ class _AddRoomState extends State<AddRoom> {
                           RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
                   ))),
-                  onPressed: () => {
-                    provider.updateRoomList(new RoomComponent(new RoomData(
-                      roomName: roomName,
-                      roomImagePath: 'assets/$selectedCategory.png',
-                      description: description,
-                      category: selectedCategory,
-                      members: 0, //always starts with 0 members
-                    ))),
-                    Navigator.pop(context),
+                  onPressed: () async{
+                     DatabaseAPI db = new DatabaseAPI();
+                     FirebaseAuth auth = FirebaseAuth.instance;
+                     await db.rooms.addRoom(Room(
+                       name: roomName,
+                       category: selectedCategory,
+                       description: description,
+                       createdBy: auth.currentUser!.uid,
+                       ID:""
+                     )
+                     );
+                    // provider.updateRoomList(new RoomComponent(new RoomData(
+                    //   roomName: roomName,
+                    //   description: description,
+                    //   category: selectedCategory,
+                    //   // members: 0, //always starts with 0 members
+                    // ))),
+                    Navigator.pop(context);
                   },
                   child: Text('Create'),
                 )
