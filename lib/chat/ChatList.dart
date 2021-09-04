@@ -21,13 +21,14 @@ class _ChatListState extends State<ChatList> {
   ScrollController scrollController = new ScrollController();
   late DatabaseAPI db;
   late Stream<QuerySnapshot> chatsStream;
-  bool needsScroll = false;
+  // bool needsScroll = true;
 
   @override
   void initState() {
     super.initState();
     db = new DatabaseAPI();
     chatsStream = db.chats.getChatsStream(widget.roomID);
+    // needsScroll = false;
   }
 
   void scrollToBottom(){
@@ -37,12 +38,12 @@ class _ChatListState extends State<ChatList> {
 
   @override
   Widget build(BuildContext context) {
-    print(needsScroll);
-    if (needsScroll) {
-      WidgetsBinding.instance!
-          .addPostFrameCallback((_) => scrollToBottom());
-      needsScroll = false;
-    }
+    // print(needsScroll);
+    // if (needsScroll) {
+    //   WidgetsBinding.instance!
+    //       .addPostFrameCallback((_) => scrollToBottom());
+    //   needsScroll = false;
+    // }
     return StreamBuilder<QuerySnapshot>(
       stream: chatsStream,
       builder: (context, snapshot) {
@@ -55,7 +56,10 @@ class _ChatListState extends State<ChatList> {
           return Text("Loading");
         }
 
-        needsScroll = true; // TODO: test this
+        // setState(() {
+        // needsScroll = true; // TODO: test this
+        // });
+
         return ListView.builder(
           controller: scrollController,
           itemCount: snapshot.data!.docs.length,
